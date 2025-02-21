@@ -1,9 +1,10 @@
 import React, { useContext, useState } from 'react';
-import { View, Text, FlatList, StyleSheet } from 'react-native';
+import { View, Text, FlatList, StyleSheet, Image } from 'react-native';
 import { ThemeContext } from '../../App'; // Import ThemeContext
 
 interface PortfolioItem {
   id: number;
+  image: any;
   title: string;
   description: string;
 }
@@ -11,15 +12,16 @@ interface PortfolioItem {
 const Projects: React.FC = () => {
   const { darkMode } = useContext(ThemeContext); // Get darkMode state
 
-  const [portfolioItems] = useState<PortfolioItem[]>([
-    { id: 1, title: 'Portfolio Website', description: 'Another portfolio website done with React.' },
-    { id: 2, title: 'Inventory Management System', description: 'A simple inventory management website with the relevant functionality.' },
-    { id: 3, title: 'Library Management Website', description: 'A library management website for the LRC.' },
-    { id: 4, title: 'Art', description: 'I also do a bunch of art.' },
+  const [portfolioItems] = useState<PortfolioItem[]>([  //containes the items withing the ProtfolioItem array
+    { id: 1, image: require('./images/fishmael.png'), title: 'Portfolio Website', description: 'A portfolio website done with React.' },
+    { id: 2, image: require('./images/storage.png'), title: 'Inventory Management System', description: 'A simple inventory management website with the relevant functionality.' },
+    { id: 3, image: require('./images/library.png'), title: 'Library Management Website', description: 'A library management website for the LRC.' },
+    { id: 4, image: require('./images/beato.png'), title: 'Art', description: 'I also do a bunch of art.' },
   ]);
 
-  const renderItem = ({ item }: { item: PortfolioItem }) => (
+  const renderItem = ({ item }: { item: PortfolioItem }) => (   //renders the contents within the array
     <View style={[styles.item, darkMode && styles.darkItem]}>
+      <Image source={item.image} style={styles.image} />
       <Text style={[styles.title, darkMode && styles.darkText]}>{item.title}</Text>
       <Text style={[styles.description, darkMode && styles.darkText]}>{item.description}</Text>
     </View>
@@ -42,24 +44,31 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: 10,
     margin: 10,
-    backgroundColor: '#fff',
+    backgroundColor: 'rgba(232, 230, 230, 0.9)',
   },
   darkContainer: {
-    backgroundColor: '#333', // Dark background for dark mode
+    backgroundColor: '#333', 
   },
   item: {
     padding: 16,
     marginBottom: 10,
     alignItems: 'center',
-    backgroundColor: '#f9f9f9',
+    backgroundColor: 'rgba(255, 255, 255, 0.95)',
     borderRadius: 8,
   },
   darkItem: {
-    backgroundColor: '#444', // Darker item background for dark mode
+    backgroundColor: '#444', 
+  },
+  image: {
+    width: 100,
+    height: 100,
+    borderRadius: 5,
+    paddingBottom: 10,
   },
   title: {
     fontSize: 18,
     fontWeight: 'bold',
+    paddingTop: 10,
   },
   description: {
     fontSize: 14,
@@ -67,7 +76,7 @@ const styles = StyleSheet.create({
     marginTop: 4,
   },
   darkText: {
-    color: '#fff', // White text in dark mode
+    color: '#fff', 
   },
 });
 
