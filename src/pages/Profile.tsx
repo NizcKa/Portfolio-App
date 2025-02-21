@@ -48,19 +48,20 @@ const Profile: React.FC = () => {
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    marginBottom: 20,
+    marginBottom: 5,
     paddingHorizontal: 16,
+    paddingVertical: 20,
   },
   lightContainer: {
-    backgroundColor: '#fff',
+    backgroundColor: 'rgba(255, 255, 255, 0.9)',
   },
   darkContainer: {
     backgroundColor: '#121212',
   },
   image: {
-    width: 100,
-    height: 100,
-    borderRadius: 50,
+    width: 200,
+    height: 200,
+    borderRadius: 100,
     marginBottom: 10,
   },
   title: {
