@@ -33,6 +33,11 @@ const Profile: React.FC = () => {
       </Text>
       <Text
         style={[styles.link, darkMode ? styles.darkLink : styles.lightLink]}
+        onPress={() => Linking.openURL('https://gmail.com')}>
+        nizcka@gmail.com
+      </Text>
+      <Text
+        style={[styles.link, darkMode ? styles.darkLink : styles.lightLink]}
         onPress={() => Linking.openURL('https://github.com/NizcKa')}>
         Github
       </Text>
